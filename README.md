@@ -3,9 +3,7 @@ A CPU scheduler that runs tasks by their priorities using Data Structures in C
 
 The scheduler initally reads tasks from sched.txt file, then creates 2 priority queues to run those tasks by moving them between those queues which are pending_queue and running_queue. The maximum capacity of CPU is 20 which means that sum of process priorities in running queue can not exceed this limit.
 
-## Scheduler Function Complexity Analysis
-
-The scheduler function starts with first creating pending and running queues. After creating both, all processes in the workload are loaded into the pending queue, and those processes are sorted using the `initialize` function which has a complexity of O(n log n) as it uses Quick Sort to sort the queue by priority values of processes.
+After creating both queues, all processes in the workload are loaded into the pending queue, and those processes are sorted using the `initialize` function which has a complexity of O(n log n) as it uses Quick Sort to sort the queue by priority values of processes.
 
 Then the scheduler starts to work on processes in a time length of 20.
 
