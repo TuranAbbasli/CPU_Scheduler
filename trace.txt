@@ -1,0 +1,136 @@
+* starting scheduling on 1 CPUs
+[t=0]
+schedule pid=0 prio=10 ('init') ... added to running queue
+CPU occupation: 10
+running: [(10, 0)]
+pending: [(5, 9)(5, 7)(5, 4)(4, 8)(4, 5)(3, 6)(2, 3)(1, 1)(1, 2)]
+
+[t=1]
+schedule pid=1 prio=1 ('bash') ... added to running queue
+CPU occupation: 11
+running: [(10, 0)(1, 1)]
+pending: [(5, 9)(5, 7)(5, 4)(4, 8)(4, 5)(3, 6)(2, 3)(1, 2)]
+
+[t=2]
+running: [(10, 0)(1, 1)]
+pending: [(5, 9)(5, 7)(5, 4)(4, 8)(4, 5)(3, 6)(2, 3)(1, 2)]
+
+[t=3]
+schedule pid=2 prio=1 ('bash') ... added to running queue
+CPU occupation: 12
+running: [(10, 0)(1, 2)(1, 1)]
+pending: [(5, 9)(5, 7)(5, 4)(4, 8)(4, 5)(3, 6)(2, 3)]
+
+[t=4]
+schedule pid=3 prio=2 ('find') ... added to running queue
+CPU occupation: 14
+running: [(10, 0)(2, 3)(1, 2)(1, 1)]
+pending: [(5, 9)(5, 7)(5, 4)(4, 8)(4, 5)(3, 6)]
+
+[t=5]
+running: [(10, 0)(2, 3)(1, 2)(1, 1)]
+pending: [(5, 9)(5, 7)(5, 4)(4, 8)(4, 5)(3, 6)]
+
+[t=6]
+running: [(10, 0)(2, 3)(1, 2)(1, 1)]
+pending: [(5, 9)(5, 7)(5, 4)(4, 8)(4, 5)(3, 6)]
+
+[t=7]
+process pid=3 prio=2 ('find') finished after time t=6
+CPU occupation: 12
+schedule pid=4 prio=5 ('gcc') ... added to running queue
+CPU occupation: 17
+running: [(10, 0)(5, 4)(1, 2)(1, 1)]
+pending: [(5, 9)(5, 7)(4, 8)(4, 5)(3, 6)]
+
+[t=8]
+schedule pid=5 prio=4 ('ld') ... can't fit. Pick process to put asleep: pid=1 prio=1 ('bash')
+CPU occupation: 16
+schedule pid=5 prio=4 ('ld') ... added to running queue
+CPU occupation: 20
+running: [(10, 0)(5, 4)(4, 5)(1, 2)]
+pending: [(5, 9)(5, 7)(4, 8)(3, 6)(1, 1)]
+
+[t=9]
+schedule pid=1 prio=1 ('bash') ... can't fit. Pick process to put asleep: None, as min prio: pid=2 prio=1 ('bash') has graeter priority
+CPU occupation: 20
+running: [(10, 0)(5, 4)(4, 5)(1, 2)]
+pending: [(5, 9)(5, 7)(4, 8)(3, 6)(1, 1)]
+
+[t=10]
+process pid=4 prio=5 ('gcc') finished after time t=9
+CPU occupation: 15
+process pid=5 prio=4 ('ld') finished after time t=9
+CPU occupation: 11
+schedule pid=6 prio=3 ('ssh') ... added to running queue
+CPU occupation: 14
+schedule pid=1 prio=1 ('bash') ... added to running queue
+CPU occupation: 15
+running: [(10, 0)(3, 6)(1, 1)(1, 2)]
+pending: [(5, 9)(5, 7)(4, 8)]
+
+[t=11]
+schedule pid=7 prio=5 ('crypt') ... added to running queue
+CPU occupation: 20
+running: [(10, 0)(5, 7)(3, 6)(1, 1)(1, 2)]
+pending: [(5, 9)(4, 8)]
+
+[t=12]
+running: [(10, 0)(5, 7)(3, 6)(1, 1)(1, 2)]
+pending: [(5, 9)(4, 8)]
+
+[t=13]
+running: [(10, 0)(5, 7)(3, 6)(1, 1)(1, 2)]
+pending: [(5, 9)(4, 8)]
+
+[t=14]
+process pid=7 prio=5 ('crypt') finished after time t=13
+CPU occupation: 15
+process pid=6 prio=3 ('ssh') finished after time t=13
+CPU occupation: 12
+schedule pid=9 prio=5 ('cat') ... added to running queue
+CPU occupation: 17
+schedule pid=8 prio=4 ('snake') ... can't fit. Pick process to put asleep: pid=2 prio=1 ('bash')
+CPU occupation: 16
+schedule pid=8 prio=4 ('snake') ... added to running queue
+CPU occupation: 20
+running: [(10, 0)(5, 9)(4, 8)(1, 1)]
+pending: [(1, 2)]
+
+[t=15]
+schedule pid=2 prio=1 ('bash') ... can't fit. Pick process to put asleep: None, as min prio: pid=1 prio=1 ('bash') has graeter priority
+CPU occupation: 20
+running: [(10, 0)(5, 9)(4, 8)(1, 1)]
+pending: [(1, 2)]
+
+[t=16]
+process pid=9 prio=5 ('cat') finished after time t=15
+CPU occupation: 15
+schedule pid=2 prio=1 ('bash') ... added to running queue
+CPU occupation: 16
+running: [(10, 0)(4, 8)(1, 2)(1, 1)]
+pending: []
+
+[t=17]
+process pid=8 prio=4 ('snake') finished after time t=16
+CPU occupation: 12
+running: [(10, 0)(1, 2)(1, 1)]
+pending: []
+
+[t=18]
+running: [(10, 0)(1, 2)(1, 1)]
+pending: []
+
+[t=19]
+process pid=0 prio=10 ('init') finished after time t=18
+CPU occupation: 2
+process pid=2 prio=1 ('bash') finished after time t=18
+CPU occupation: 1
+process pid=1 prio=1 ('bash') finished after time t=18
+CPU occupation: 0
+running: []
+pending: []
+
+[t=20]
+running: []
+pending: []
